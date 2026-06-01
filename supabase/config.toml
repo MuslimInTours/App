@@ -1,0 +1,7 @@
+project_id = "muslimin"
+
+[functions.send-push]
+verify_jwt = true
+
+[functions.send-feedback]
+verify_jwt = false
