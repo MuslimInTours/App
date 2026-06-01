@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Muslim'in",
-    "slug": "tours-muslim",
+    "slug": "muslimin",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,7 +10,7 @@
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/dfeb1f84-6ec8-41aa-9093-5f61013074c2"
+      "url": "https://u.expo.dev/456d8457-1c00-44b2-bd56-535e4e2ed0a1"
     },
     "ios": {
       "bundleIdentifier": "com.muslimin.app",
@@ -60,9 +60,9 @@
       "supabaseUrl": "https://stokotegvjpvntuvryzb.supabase.co",
       "supabaseAnonKey": "sb_publishable_QYnbWeZgkb-C3PSLs-o5kQ_Oe8OOnHw",
       "eas": {
-        "projectId": "dfeb1f84-6ec8-41aa-9093-5f61013074c2"
+        "projectId": "456d8457-1c00-44b2-bd56-535e4e2ed0a1"
       }
     },
-    "owner": "tours-muslim-org"
+    "owner": "muslimin-tours"
   }
 }
