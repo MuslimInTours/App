@@ -57,6 +57,8 @@
       "expo-audio"
     ],
     "extra": {
+      "supabaseUrl": "https://stokotegvjpvntuvryzb.supabase.co",
+      "supabaseAnonKey": "sb_publishable_QYnbWeZgkb-C3PSLs-o5kQ_Oe8OOnHw",
       "eas": {
         "projectId": "dfeb1f84-6ec8-41aa-9093-5f61013074c2"
       }
