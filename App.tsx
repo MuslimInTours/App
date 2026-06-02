@@ -13,10 +13,12 @@ import { AdminScreen } from './src/screens/AdminScreen';
 import { FeedbackScreen } from './src/screens/FeedbackScreen';
 import { CommunityScreen } from './src/screens/CommunityScreen';
 import { SubmitInfoScreen } from './src/screens/SubmitInfoScreen';
+import { PasswordResetScreen } from './src/screens/PasswordResetScreen';
+import { hasPasswordRecoveryParams } from './src/services/passwordRecoveryService';
 import { colors } from './src/theme/colors';
 import { ThemeProvider, useThemeSettings, useThemedStyles } from './src/theme/ThemeProvider';
 
-type AppScreen = TabKey | 'admin' | 'community' | 'feedback' | 'submitInfo';
+type AppScreen = TabKey | 'admin' | 'community' | 'feedback' | 'passwordReset' | 'submitInfo';
 const cachedScreens: AppScreen[] = ['home', 'news', 'quran', 'more', 'settings'];
 
 export default function App() {
@@ -31,10 +33,14 @@ function ThemedApp() {
   useStyles();
 
   const { resolvedTheme } = useThemeSettings();
-  const [activeScreen, setActiveScreen] = useState<AppScreen>('home');
-  const [visitedScreens, setVisitedScreens] = useState<AppScreen[]>(['home']);
+  const initialScreen = hasPasswordRecoveryParams() ? 'passwordReset' : 'home';
+  const [activeScreen, setActiveScreen] = useState<AppScreen>(initialScreen);
+  const [visitedScreens, setVisitedScreens] = useState<AppScreen[]>([initialScreen]);
   const activeTab: TabKey =
-    activeScreen === 'admin' || activeScreen === 'community' || activeScreen === 'feedback'
+    activeScreen === 'admin' ||
+    activeScreen === 'community' ||
+    activeScreen === 'feedback' ||
+    activeScreen === 'passwordReset'
       ? 'more'
       : activeScreen === 'submitInfo'
         ? 'news'
@@ -79,6 +85,8 @@ function ThemedApp() {
         return <CommunityScreen onBack={() => navigate('more')} />;
       case 'feedback':
         return <FeedbackScreen onBack={() => navigate('more')} />;
+      case 'passwordReset':
+        return <PasswordResetScreen onDone={() => navigate('admin')} />;
       case 'submitInfo':
         return <SubmitInfoScreen onBack={() => navigate('news')} />;
       default:
@@ -100,7 +108,7 @@ function ThemedApp() {
         ))}
         {!cachedScreens.includes(activeScreen) ? renderScreen(activeScreen) : null}
       </View>
-      <TabBar activeTab={activeTab} onChange={navigate} />
+      {activeScreen === 'passwordReset' ? null : <TabBar activeTab={activeTab} onChange={navigate} />}
     </SafeAreaView>
   );
 }
