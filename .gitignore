@@ -33,9 +33,17 @@ yarn-error.*
 # local env files
 .env
 .env*.local
+.env.swo
+.env.swp
 
 # Supabase local metadata
 supabase/.temp/
+
+# Local AI marketing experiments
+marketing/nano-banana-*/
+marketing/nano-banana-manual*/
+marketing/nano-banana-*.zip
+scripts/generate-nano-banana-assets.mjs
 
 # typescript
 *.tsbuildinfo

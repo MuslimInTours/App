@@ -5,6 +5,7 @@ import {
   Linking,
   NativeScrollEvent,
   NativeSyntheticEvent,
+  Platform,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -96,6 +97,11 @@ export function PrayerScreen() {
     let subscription: Location.LocationSubscription | null = null;
 
     const startCompass = async () => {
+      if (Platform.OS === 'web') {
+        setCompassStatus('Boussole native non disponible sur web. Cap calculé depuis Tours.');
+        return;
+      }
+
       try {
         const permission = await Location.requestForegroundPermissionsAsync();
 
@@ -152,7 +158,11 @@ export function PrayerScreen() {
 
     return () => {
       isMounted = false;
-      subscription?.remove();
+      try {
+        subscription?.remove();
+      } catch {
+        // Expo Web can expose partial heading subscriptions; ignore cleanup failures.
+      }
     };
   }, []);
 

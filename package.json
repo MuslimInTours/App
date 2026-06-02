@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@types/react": "~19.1.10",
+    "sharp": "^0.34.5",
     "typescript": "~5.9.2"
   },
   "scripts": {
@@ -52,7 +53,8 @@
     "eas:update:production": "npx eas-cli update --branch production",
     "build:ios:preview": "npx eas-cli build --profile preview --platform ios",
     "build:android:preview": "npx eas-cli build --profile preview --platform android",
-    "brand:assets": "node scripts/generate-brand-assets.mjs"
+    "brand:assets": "node scripts/generate-brand-assets.mjs",
+    "store:assets": "node scripts/generate-store-assets.mjs"
   },
   "private": true
 }
